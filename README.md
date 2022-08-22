@@ -1,24 +1,11 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+$ docker compose run --no-deps web rails new . --force --database=postgresql
 
-Things you may want to cover:
+$ docker compose build
 
-* Ruby version
+$ docker compose up
 
-* System dependencies
+Finally, you need to create the database. In another terminal, run:
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+$ docker compose run web rake db:create
