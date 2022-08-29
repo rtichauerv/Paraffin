@@ -1,7 +1,6 @@
 name: 'Auto Assign PR reviewers'
 on:
   pull_request_target
-
 jobs:
   add-reviews:
     runs-on: ubuntu-latest
