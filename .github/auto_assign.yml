@@ -1,9 +1,8 @@
 addReviewers: true
 addAssignees: author
+numberOfReviewers: 1
 reviewers:
   - rtichauerv
   - alehandrol
   - cecyramallo
   - ristopher
-
-numberOfReviewers: 1
