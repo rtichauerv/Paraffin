@@ -53,4 +53,32 @@ RSpec.describe ResourcesController, type: :request do
       end
     end
   end
+
+  describe 'GET /index' do
+    let(:user) { create(:user) }
+    let(:resource) { create(:resource, user:) }
+    let(:params) do
+      { 'learning_unit_id': resource.learning_unit.id }
+    end
+
+    before do
+      sign_in user
+    end
+
+    context 'when accessing the resource index page' do
+      def perform
+        get learning_unit_resources_path(params)
+      end
+
+      it 'shows the name of the learning unit to whom the resource belongs' do
+        perform
+        expect(response.body).to match(resource.learning_unit.name)
+      end
+
+      it 'shows the name of the resource' do
+        perform
+        expect(response.body).to match(resource.name)
+      end
+    end
+  end
 end
