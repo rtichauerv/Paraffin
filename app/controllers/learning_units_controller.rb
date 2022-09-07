@@ -4,7 +4,9 @@ class LearningUnitsController < ApplicationController
 
   def index; end
 
-  def show; end
+  def show
+    redirect_to learning_unit_resources_path(@learning_unit)
+  end
 
   private
 
