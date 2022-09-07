@@ -14,9 +14,10 @@ RSpec.describe LearningUnitsController, type: :request do
         get learning_unit_path(learning_unit)
       end
 
-      it 'shows the name of the learning unit' do
+      it 'redirects to the resources index page' do
         perform
-        expect(response.body).to include(learning_unit.name)
+        expect(perform)
+          .to redirect_to(learning_unit_resources_path(learning_unit))
       end
     end
   end
