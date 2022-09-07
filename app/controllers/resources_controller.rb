@@ -5,4 +5,8 @@ class ResourcesController < ApplicationController
     @evaluation = ResourceEvaluation
                   .find_by(user: current_user, resource:)
   end
+
+  def index
+    @learning_unit = LearningUnit.find(params[:learning_unit_id])
+  end
 end
