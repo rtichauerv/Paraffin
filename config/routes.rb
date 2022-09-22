@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   scope '/api' do
+    get '/resources/:resource_id', to: 'resources#get_resource'
   end
 
   resources :resources, only: %i[show] do
