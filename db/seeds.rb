@@ -15,9 +15,9 @@ CurriculumAffiliation.create(curriculum: first_curr,
 CurriculumAffiliation.create(curriculum: first_curr,
                              learning_unit: s_learning_unit)
 f_resource = Resource.create(user: f_user, learning_unit: f_learning_unit,
-                             name: 'Ruby for dummies', url: 'fakeurl.io')
+                             name: 'Ruby for dummies', url: 'http://www.fakeurl.io')
 s_resource = Resource.create(user: s_user, learning_unit: f_learning_unit,
-                             name: 'The best Ruby', url: 'fakeurl.io')
+                             name: 'The best Ruby', url: 'http://www.fakeurl.io')
 ResourceComment.create(user: s_user, resource: f_resource,
                        content: 'Vale pico tu wea')
 ResourceEvaluation.create(user: t_user, resource: f_resource, evaluation: 5)
