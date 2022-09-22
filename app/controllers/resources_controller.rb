@@ -18,4 +18,12 @@ class ResourcesController < ApplicationController
     )
     redirect_to(LearningUnit.find(learning_unit_id))
   end
+
+  def get_resource
+    resource = Resource.find(params[:resource_id])
+    render json: {
+      'resource': resource,
+      'average_evaluation': resource.average_evaluation.to_f
+    }
+  end
 end
