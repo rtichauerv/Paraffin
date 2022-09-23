@@ -1,10 +1,4 @@
 class ResourceCommentsController < ApplicationController
-  def index
-    resource_id = params['resource_id']
-    comments = ResourceComment.where(resource_id:)
-    render json: comments, only: %i[id content resource_id user_id]
-  end
-
   def create
     content = params['resource_comments']['content']
     resource_id = params['resource_id']
