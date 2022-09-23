@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   devise_for :users
 
   scope '/api' do
-    get '/resources/:resource_id', to: 'resources#get_resource'
+    defaults format: :json do
+      get '/resources/:resource_id', to: 'api_resources#show'
+    end
   end
 
   resources :resources, only: %i[show] do
