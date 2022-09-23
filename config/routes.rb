@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   scope '/api' do
     defaults format: :json do
       get '/resources/:resource_id', to: 'api_resources#show'
+      get '/resources/:resource_id/resource_comments', to: 'resource_comments#index'
     end
+    
   end
 
   resources :resources, only: %i[show] do
