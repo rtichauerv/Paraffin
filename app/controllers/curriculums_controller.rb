@@ -1,5 +1,12 @@
 class CurriculumsController < ApplicationController
   before_action :set_curriculum
+
+  def index
+    curriculums = Curriculum.all.select(:id, :name)
+    render json: curriculums
+  end
+
+
   def show
     redirect_to curriculum_learning_units_path(@curriculum)
   end

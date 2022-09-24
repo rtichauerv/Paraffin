@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
+  mount Rswag::Ui::Engine => '/api-docs'
+  mount Rswag::Api::Engine => '/api-docs'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users
+
+  scope :api, defaults: {format: :json} do
+    resources :curriculums
+  end
 
   resources :resources, only: %i[show] do
     resources :resource_comments, only: %i[create]
