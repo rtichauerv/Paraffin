@@ -12,9 +12,8 @@ Rails.application.routes.draw do
         to: 'api_resource_comments#show'
       post '/resources/:resource_id/resource_comments',
         to: 'api_resource_comments#create'
-
+      put '/resources/:resource_id/resource_evaluation', to: 'api_resource_evaluations#update'
       get '/curriculums', to: 'api_curriculums#index'
-
       get '/curriculums/:curriculum_id', to: 'api_curriculums#show'
 
       get '/curriculums/:curriculum_id/learning_units',
