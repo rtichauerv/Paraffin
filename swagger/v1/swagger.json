@@ -9,7 +9,7 @@
       "get": {
         "summary": "Retrieves a list of resource comments",
         "tags": [
-          "resource_comments"
+          "Resource Comments"
         ],
         "operationId": "getResourceComments",
         "parameters": [
