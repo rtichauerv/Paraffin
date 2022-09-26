@@ -97,12 +97,11 @@
       }
     },
     "/api/resources/{resource_id}/resource_comments": {
-      "get": {
-        "summary": "Retrieves a list of resource comments",
+      "post": {
+        "summary": "Creates a new comment",
         "tags": [
-          "Resource Comments"
+          "Resource comment"
         ],
-        "operationId": "getResourceComments",
         "parameters": [
           {
             "name": "resource_id",
@@ -113,35 +112,31 @@
             }
           }
         ],
+        "operationId": "createResourceComment",
         "responses": {
-          "200": {
+          "201": {
             "description": "Success",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "properties": {
-                      "id": {
-                        "type": "integer"
-                      },
-                      "user_id": {
-                        "type": "integer"
-                      },
-                      "resource_id": {
-                        "type": "integer"
-                      },
-                      "content": {
-                        "type": "string"
-                      }
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "content": {
+                      "type": "string"
+                    },
+                    "resource_id": {
+                      "type": "integer"
                     }
                   }
                 }
               }
             }
           },
-          "404": {
-            "description": "Resource Not Found",
+          "400": {
+            "description": "Invalid parameters",
             "content": {
               "application/json": {
                 "schema": {
@@ -158,6 +153,44 @@
                     }
                   }
                 }
+              }
+            }
+          },
+          "404": {
+            "description": "Invalid parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "content": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "content"
+                ]
               }
             }
           }
