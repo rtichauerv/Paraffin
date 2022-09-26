@@ -6,7 +6,7 @@ class ApiResourceCommentsController < ApiApplicationController
   end
   
   def create
-    content = params['comment']
+    content = params['content']
     resource_id = params['resource_id']
     newComment = ResourceComment.new(
       content:,
