@@ -4,7 +4,7 @@ class ApiResourceCommentsController < ApiApplicationController
     comments = Resource.find(resource_id)&.resource_comments
     render json: comments, only: %i[id content resource_id user_id]
   end
-  
+
   def create
     content = params['content']
     resource_id = params['resource_id']
