@@ -166,7 +166,7 @@
       "post": {
         "summary": "Creates a new comment",
         "tags": [
-          "Resource comments"
+          "Resource Comments"
         ],
         "parameters": [
           {
