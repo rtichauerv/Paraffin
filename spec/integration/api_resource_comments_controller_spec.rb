@@ -71,7 +71,7 @@ describe ApiResourceCommentsController do
         tags 'Resource comment'
         consumes 'application/json'
         parameter name: :resource_id, in: :path, type: :string
-        parameter name: :json_body, in: :body, schema: {
+        parameter name: :comment, in: :body, schema: {
           type: :object,
           properties: {
             content: { type: :string }
@@ -89,7 +89,7 @@ describe ApiResourceCommentsController do
                    resource_id: { type: :integer }
                  }
           let(:resource_id) { create(:resource).id }
-          let(:json_body) { { 'content': 'test' } }
+          let(:comment) { { 'content': 'test' } }
           run_test!
         end
 
@@ -102,14 +102,14 @@ describe ApiResourceCommentsController do
 
           context 'when content is not present in json body' do
             let(:resource_id) { create(:resource).id }
-            let(:json_body) { { 'asd': 'test' } }
+            let(:comment) { { 'asd': 'test' } }
 
             run_test!
           end
 
           context 'when content is an empty string' do
             let(:resource_id) { create(:resource).id }
-            let(:json_body) { { 'content': '' } }
+            let(:comment) { { 'content': '' } }
 
             run_test!
           end
@@ -123,7 +123,7 @@ describe ApiResourceCommentsController do
           }
           context 'when resource does not exist' do
             let(:resource_id) { 'invalid' }
-            let(:json_body) { { 'content': 'test' } }
+            let(:comment) { { 'content': 'test' } }
 
             run_test!
           end
