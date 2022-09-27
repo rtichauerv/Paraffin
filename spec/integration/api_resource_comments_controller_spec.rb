@@ -90,8 +90,12 @@ describe ApiResourceCommentsController do
                    user_id: { type: :integer }
                  }
           let(:resource_id) { create(:resource).id }
-          let(:comment) { { 'content': 'test' } }
-          run_test!
+          let(:comment) { { 'content': 'test message' } }
+
+          run_test! do |response|
+            data = JSON.parse(response.body)
+            expect(data['content']).to eq(ResourceComment.last.content)
+          end
         end
 
         response 400, 'Invalid parameters' do
