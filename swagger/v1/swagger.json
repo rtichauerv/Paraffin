@@ -5,6 +5,68 @@
     "version": "v1"
   },
   "paths": {
+    "/api/curriculums/{curriculum_id}/completed_learning_units": {
+      "get": {
+        "summary": "List of all the learning units that belong to this curriculum, completed by the user",
+        "tags": [
+          "Learning Units"
+        ],
+        "operationId": "listCompletedLearningUnitsOfCurriculumCompletedByUser",
+        "parameters": [
+          {
+            "name": "curriculum_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "id": {
+                        "type": "integer"
+                      },
+                      "learning_unit_id": {
+                        "type": "integer"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Curriculum Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/curriculums": {
       "get": {
         "summary": "List of all curriculums",
