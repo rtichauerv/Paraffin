@@ -64,4 +64,76 @@ describe ApiResourceCommentsController do
       end
     end
   end
+
+  describe 'Resources Comments API' do
+    path '/api/resources/{resource_id}/resource_comments' do
+      post 'Creates a new comment' do
+        tags 'Resource Comments'
+        consumes 'application/json'
+        parameter name: :resource_id, in: :path, type: :string
+        parameter name: :comment, in: :body, schema: {
+          type: :object,
+          properties: {
+            content: { type: :string }
+          },
+          required: ['content']
+        }
+        produces 'application/json'
+        operationId 'createResourceComment'
+
+        response '201', 'Success' do
+          schema type: :object,
+                 properties: {
+                   id: { type: :integer },
+                   content: { type: :string },
+                   resource_id: { type: :integer },
+                   user_id: { type: :integer }
+                 }
+          let(:resource_id) { create(:resource).id }
+          let(:comment) { { 'content': 'test message' } }
+
+          run_test! do |response|
+            data = JSON.parse(response.body)
+            expect(data['content']).to eq(ResourceComment.last.content)
+          end
+        end
+
+        response 400, 'Invalid parameters' do
+          schema type: :object, properties: {
+            'code': { type: :integer },
+            'message': { type: :string },
+            'status': { type: :string }
+          }
+
+          context 'when content is not present in json body' do
+            let(:resource_id) { create(:resource).id }
+            let(:comment) { { 'asd': 'test' } }
+
+            run_test!
+          end
+
+          context 'when content is an empty string' do
+            let(:resource_id) { create(:resource).id }
+            let(:comment) { { 'content': '' } }
+
+            run_test!
+          end
+        end
+
+        response 404, 'Resource does not exist' do
+          schema type: :object, properties: {
+            'code': { type: :integer },
+            'message': { type: :string },
+            'status': { type: :string }
+          }
+          context 'when resource does not exist' do
+            let(:resource_id) { 'invalid' }
+            let(:comment) { { 'content': 'test' } }
+
+            run_test!
+          end
+        end
+      end
+    end
+  end
 end
