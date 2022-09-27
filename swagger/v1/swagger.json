@@ -5,6 +5,37 @@
     "version": "v1"
   },
   "paths": {
+    "/api/curriculums": {
+      "get": {
+        "summary": "List of all curriculums",
+        "tags": [
+          "Curriculums"
+        ],
+        "operationId": "listCurriculums",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "id": {
+                        "type": "integer"
+                      },
+                      "name": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/resources/{resource_id}/resource_comments": {
       "get": {
         "summary": "Retrieves a list of resource comments",
