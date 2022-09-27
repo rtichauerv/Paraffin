@@ -8,18 +8,18 @@ class ApiResourceCommentsController < ApiApplicationController
   def create
     content = params['content']
     resource_id = params['resource_id']
-    newComment = ResourceComment.new(
+    new_comment = ResourceComment.new(
       content:,
       user: current_user,
       resource_id:
     )
 
-    if newComment.save
+    if new_comment.save
       status = :created
       render json: {
-        'commentId': newComment.id,
-        'content': newComment.content,
-        'resource_id': newComment.resource.id
+        'commentId': new_comment.id,
+        'content': new_comment.content,
+        'resource_id': new_comment.resource.id
       }, status:
     elsif content.nil?
       handle_bad_request_custom_message('content_must_exist')
