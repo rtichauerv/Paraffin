@@ -107,7 +107,7 @@ describe ApiResourceCommentsController do
             run_test!
           end
 
-          context 'when content in null' do
+          context 'when content is an empty string' do
             let(:resource_id) { create(:resource).id }
             let(:json_body) { { 'content': '' } }
 
