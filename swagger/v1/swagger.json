@@ -112,7 +112,7 @@
                           "nullable": true
                         },
                         "average_evaluation": {
-                          "type": "number",
+                          "type": "string",
                           "nullable": true
                         }
                       }

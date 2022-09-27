@@ -22,7 +22,7 @@ describe ApiResourcesController do
               'id': { type: :integer },
               'name': { type: :string },
               'url': { type: :string, nullable: true },
-              'average_evaluation': { type: :number, nullable: true }
+              'average_evaluation': { type: :string, nullable: true }
             }
           }
         }
