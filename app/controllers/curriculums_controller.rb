@@ -6,7 +6,6 @@ class CurriculumsController < ApplicationController
     render json: curriculums
   end
 
-
   def show
     redirect_to curriculum_learning_units_path(@curriculum)
   end
