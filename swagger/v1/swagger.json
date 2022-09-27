@@ -166,7 +166,7 @@
       "post": {
         "summary": "Creates a new comment",
         "tags": [
-          "Resource comment"
+          "Resource comments"
         ],
         "parameters": [
           {
@@ -194,6 +194,9 @@
                       "type": "string"
                     },
                     "resource_id": {
+                      "type": "integer"
+                    },
+                    "user_id": {
                       "type": "integer"
                     }
                   }
