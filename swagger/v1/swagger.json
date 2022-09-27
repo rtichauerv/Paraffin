@@ -96,6 +96,68 @@
         }
       }
     },
+    "/api/curriculums/{curriculum_id}/learning_units": {
+      "get": {
+        "summary": "List of all learning units belonging to a curriculum",
+        "tags": [
+          "Learning Units"
+        ],
+        "operationId": "listLearningUnitsOfCurriculum",
+        "parameters": [
+          {
+            "name": "curriculum_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "id": {
+                        "type": "integer"
+                      },
+                      "name": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Curriculum Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/resources/{resource_id}/resource_comments": {
       "get": {
         "summary": "Retrieves a list of resource comments",
