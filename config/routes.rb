@@ -20,7 +20,7 @@ Rails.application.routes.draw do
       get '/curriculums/:curriculum_id/learning_units',
         to: 'api_learning_units#learning_units_of_curriculum'
 
-        get '/current_session', to: 'api_session#index'
+      get '/current_session', to: 'api_session#index'
     end
   end
 
