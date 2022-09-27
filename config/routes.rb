@@ -17,7 +17,6 @@ Rails.application.routes.draw do
 
       get '/curriculums/:curriculum_id', to: 'api_curriculums#show'
     end
-
   end
 
   resources :resources, only: %i[show] do
