@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       get '/curriculums', to: 'api_curriculums#index'
 
       get '/curriculums/:curriculum_id', to: 'api_curriculums#show'
+      get '/current_session', to: 'api_session#index'
     end
   end
 
