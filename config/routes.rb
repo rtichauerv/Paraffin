@@ -13,6 +13,8 @@ Rails.application.routes.draw do
         to: 'api_resource_comments#show'
 
       get '/curriculums', to: 'api_curriculums#index'
+
+      get '/curriculums/:curriculum_id', to: 'api_curriculums#show'
     end
 
   end
