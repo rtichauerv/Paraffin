@@ -11,6 +11,7 @@ describe ApiResourcesController do
   path '/api/resources/{resource_id}' do
     get 'Retrieves a resource' do
       tags 'Resources'
+      operationId 'getResource'
       produces 'application/json'
       parameter name: :resource_id, in: :path, type: :string
 

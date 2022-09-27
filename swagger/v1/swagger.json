@@ -79,6 +79,7 @@
         "tags": [
           "Resources"
         ],
+        "operationId": "getResource",
         "parameters": [
           {
             "name": "resource_id",
