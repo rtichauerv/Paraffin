@@ -61,4 +61,33 @@ describe ApiCurriculumsController do
       end
     end
   end
+
+  path '/api/curriculums/{curriculum_id}' do
+    get 'Retrieves a curriculum' do
+      tags 'Curriculums'
+      operationId 'getCurriculum'
+      produces 'application/json'
+      parameter name: :curriculum_id, in: :path, type: :string
+
+      response '200', 'Success' do
+        schema type: :object, properties: {
+          'id': { type: :integer },
+          'name': { type: :string }
+        }
+
+        let(:curriculum_id) { create(:curriculum).id }
+        run_test!
+      end
+
+      response '404', 'Curriculum Not Found' do
+        schema type: :object, properties: {
+          'code': { type: :integer },
+          'message': { type: :string },
+          'status': { type: :string }
+        }
+        let(:curriculum_id) { 'invalid' }
+        run_test!
+      end
+    end
+  end
 end
