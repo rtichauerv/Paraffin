@@ -23,8 +23,6 @@ Rails.application.routes.draw do
       get '/curriculums/:curriculum_id/completed_learning_units',
         to: 'api_completed_learning_units#'\
             'curriculums_learning_units_completed_by_user'
-
-      get '/current_session', to: 'api_session#index'
     end
   end
 
