@@ -68,7 +68,7 @@ describe ApiResourceCommentsController do
   describe 'Resources Comments API' do
     path '/api/resources/{resource_id}/resource_comments' do
       post 'Creates a new comment' do
-        tags 'Resource comment'
+        tags 'Resource comments'
         consumes 'application/json'
         parameter name: :resource_id, in: :path, type: :string
         parameter name: :comment, in: :body, schema: {
