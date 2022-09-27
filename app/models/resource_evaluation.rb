@@ -14,5 +14,6 @@ class ResourceEvaluation < ApplicationRecord
   belongs_to :user
 
   validates :user, uniqueness: { scope: [:resource] }
-  validates :evaluation, numericality: { only_integer: true, in: (0..5) }
+  validates :evaluation, numericality: { only_integer: true, in: (0..5),
+                                         allow_nil: true }
 end
