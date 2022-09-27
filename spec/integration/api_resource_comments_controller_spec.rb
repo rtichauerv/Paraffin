@@ -86,7 +86,8 @@ describe ApiResourceCommentsController do
                  properties: {
                    id: { type: :integer },
                    content: { type: :string },
-                   resource_id: { type: :integer }
+                   resource_id: { type: :integer },
+                   user_id: { type: :integer }
                  }
           let(:resource_id) { create(:resource).id }
           let(:comment) { { 'content': 'test' } }

@@ -13,6 +13,8 @@ class ApiResourceCommentsController < ApiApplicationController
       user: current_user,
       resource_id: resource.id
     )
-    render json: comment, only: %i[id content resource_id], status: :created
+    render json: comment,
+           only: %i[id content resource_id user_id],
+           status: :created
   end
 end
