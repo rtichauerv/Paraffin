@@ -2,7 +2,7 @@ class CurriculumsController < ApplicationController
   before_action :set_curriculum
 
   def index
-    curriculums = Curriculum.all.select(:id, :name)
+    curriculums = Curriculum.all.select(:id, :name, :description)
     render json: curriculums
   end
 
