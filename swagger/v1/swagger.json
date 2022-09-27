@@ -79,6 +79,7 @@
         "tags": [
           "Resources"
         ],
+        "operationId": "getResource",
         "parameters": [
           {
             "name": "resource_id",
@@ -97,23 +98,18 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "resource": {
-                      "type": "object",
-                      "properties": {
-                        "id": {
-                          "type": "integer"
-                        },
-                        "name": {
-                          "type": "string"
-                        },
-                        "url": {
-                          "type": "string",
-                          "nullable": true
-                        }
-                      }
+                    "id": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string",
+                      "nullable": true
                     },
                     "average_evaluation": {
-                      "type": "number",
+                      "type": "string",
                       "nullable": true
                     }
                   }
