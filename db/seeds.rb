@@ -8,8 +8,8 @@ s_user = User.create(name: 'Cris', email: 'cris@paraffin.com', password: 'passwo
 t_user = User.create(name: 'Rony', email: 'rony@paraffin.com', password: 'password')
 User.create(name: 'Cecy', email: 'cecy@paraffin.com', password: 'password')
 first_curr = Curriculum.create(name: 'Fullstack Developer', description: 'El camino para convertiorse en un dev super cachilupi')
-f_learning_unit = LearningUnit.create(name: 'Ruby')
-s_learning_unit = LearningUnit.create(name: 'Rails')
+f_learning_unit = LearningUnit.create(name: 'Ruby', description: 'Aprendamos a crear el backend de una Web App')
+s_learning_unit = LearningUnit.create(name: 'Rails', description: 'Aprendamos a crear el backend de una Web App')
 CurriculumAffiliation.create(curriculum: first_curr,
                              learning_unit: f_learning_unit)
 CurriculumAffiliation.create(curriculum: first_curr,
