@@ -10,7 +10,7 @@ describe ApiResourceEvaluationsController do
 
   path '/api/resources/{resource_id}/resource_evaluation' do
     put 'Creates or modifies the evaluation of a resource' do
-      tags 'ResourceEvaluations'
+      tags 'Resource Evaluations'
       operationId 'setResourceEvaluation'
       consumes 'application/json'
       parameter name: :resource_id, in: :path, type: :string
