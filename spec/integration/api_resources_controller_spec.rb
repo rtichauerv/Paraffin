@@ -38,4 +38,63 @@ describe ApiResourcesController do
       end
     end
   end
+
+  path '/api/learning_units/{learning_unit_id}/resources' do
+    get 'List of all resources belonging to a learning unit' do
+      tags 'Resources'
+      operationId 'listResources'
+      produces 'application/json'
+      parameter name: :learning_unit_id, in: :path, type: :string
+
+      response '200', 'Success' do
+        schema type: :array, items: {
+          properties: {
+            id: { type: :integer },
+            name: { type: :string },
+            url: { type: :string },
+            average_evaluation: { type: :string }
+          }
+        }
+        let(:learning_unit) { create(:learning_unit) }
+        let(:learning_unit_id) { learning_unit.id }
+        run_test!
+
+        context 'when there are no resources' do
+          before do |example|
+            submit_request(example.metadata)
+          end
+
+          it 'returns an empty array' do
+            data = JSON.parse(response.body)
+            expect(data.length).to eq(0)
+          end
+        end
+
+        context 'when there is one resource' do
+          before do |example|
+            create(
+              :resource,
+              learning_unit:
+            )
+            submit_request(example.metadata)
+          end
+
+          it 'returns an array with 1 element' do
+            data = JSON.parse(response.body)
+            expect(data.length).to eq(1)
+          end
+        end
+      end
+
+      response '404', 'Learning Unit Not Found' do
+        schema type: :object, properties: {
+          'code': { type: :integer },
+          'message': { type: :string },
+          'status': { type: :string }
+        }
+        let(:learning_unit_id) { 'invalid' }
+        run_test!
+      end
+    end
+  end
 end

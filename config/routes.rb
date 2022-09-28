@@ -25,6 +25,9 @@ Rails.application.routes.draw do
             'curriculums_learning_units_completed_by_user'
 
       get '/current_session', to: 'api_session#index'
+      
+      get '/learning_units/:learning_unit_id/resources',
+        to: 'api_resources#resources_of_learning_unit'
     end
   end
 
