@@ -60,6 +60,9 @@ gem 'validate_url'
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
+gem 'rswag-api'
+gem 'rswag-ui'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]
@@ -70,6 +73,8 @@ group :development, :test do
   gem 'rubocop-performance', '1.14.2', require: false
   gem 'rubocop-rails', '2.15.2', require: false
   gem 'rubocop-rspec', '2.11.1', require: false
+  gem 'rspec-rails'
+  gem 'rswag-specs'
 end
 
 group :development do
