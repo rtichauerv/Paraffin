@@ -1,6 +1,6 @@
 class ApiResourceEvaluationsController < ApiApplicationController
   def update
-    evaluation = params['evaluation']
+    evaluation = params.require(:evaluation)
     resource_id = params['resource_id']
     Resource.find(resource_id)
     resource_evaluation = ResourceEvaluation
