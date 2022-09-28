@@ -23,6 +23,9 @@ Rails.application.routes.draw do
         to: 'api_completed_learning_units#'\
             'curriculums_learning_units_completed_by_user'
 
+      delete '/learning_units/:learning_unit_id/completed_learning_units',
+        to: 'api_completed_learning_units#uncomplete_learning_unit'
+
       get '/current_session', to: 'api_session#index'
 
       get '/learning_units/:learning_unit_id/resources',
