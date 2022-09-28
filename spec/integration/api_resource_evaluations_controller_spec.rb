@@ -49,6 +49,28 @@ describe ApiResourceEvaluationsController do
           run_test!
         end
       end
+
+      response 400, 'Invalid parameters' do
+        schema type: :object, properties: {
+          'code': { type: :integer },
+          'message': { type: :string },
+          'status': { type: :string }
+        }
+
+        context 'when evaluation is out of range' do
+          let(:resource_id) { create(:resource).id }
+          let(:evaluation) { { 'evaluation': -5 } }
+
+          run_test!
+        end
+
+        context 'when evaluation param does not exist in the body' do
+          let(:resource_id) { create(:resource).id }
+          let(:evaluation) { { 'cat': 5 } }
+
+          run_test!
+        end
+      end
     end
   end
 end
