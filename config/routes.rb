@@ -10,10 +10,7 @@ Rails.application.routes.draw do
   scope '/api' do
     defaults format: :json do
       get '/curriculums', to: 'api_curriculums#index'
-<<<<<<< HEAD
       get '/learning_units', to: 'api_learning_units#index'
-=======
->>>>>>> 59b31b8 (feat: Change API  logic>api_curriculum controller)
     end
   end
 
