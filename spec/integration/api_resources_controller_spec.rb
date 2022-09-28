@@ -55,8 +55,7 @@ describe ApiResourcesController do
             average_evaluation: { type: :string }
           }
         }
-        let(:learning_unit) { create(:learning_unit) }
-        let(:learning_unit_id) { learning_unit.id }
+        let(:learning_unit_id) { create(:learning_unit).id }
         run_test!
 
         context 'when there are no resources' do
@@ -74,7 +73,7 @@ describe ApiResourcesController do
           before do |example|
             create(
               :resource,
-              learning_unit:
+              learning_unit_id:
             )
             submit_request(example.metadata)
           end
