@@ -11,21 +11,17 @@ class ApiCompletedLearningUnitsController < ApiApplicationController
   end
 
   def update
-    completition_register = CompletedLearningUnit.find {|record|
-      record.learning_unit_id == @learning_unit.id &&
-      record.user_id == current_user.id
-    }
-    if completition_register.nil?
-      completition_register = CompletedLearningUnit.create(
-        learning_unit: @learning_unit,
-        user: current_user)
+    completition_register = CompletedLearningUnit.find_or_initialize_by(
+      user: current_user,
+      learning_unit: @learning_unit
+    )
+    unless completition_register.id?
+      completition_register.save
       status = :created
-    else
-      status = :ok
     end
-    render json: completition_register,
-          only: %i[id learning_unit_id user_id],
-          status:
+
+    render json: completition_register, only: %i[id learning_unit_id user_id],
+           status:
   end
 
   private
@@ -34,4 +30,3 @@ class ApiCompletedLearningUnitsController < ApiApplicationController
     @learning_unit = LearningUnit.find(params[:learning_unit_id])
   end
 end
-
