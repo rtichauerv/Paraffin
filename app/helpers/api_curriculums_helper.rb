@@ -1,0 +1,2 @@
+module ApiCurriculumsHelper
+end
