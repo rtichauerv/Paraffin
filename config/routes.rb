@@ -4,11 +4,12 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users
-  
+
   #For API routes use get/to to redirect to the API controller
   scope '/api' do
     defaults format: :json do
       get '/curriculums', to: 'api_curriculums#index'
+      get '/learning_units', to: 'api_learning_units#index'
     end
   end
 
