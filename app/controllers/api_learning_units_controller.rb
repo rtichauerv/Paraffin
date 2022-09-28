@@ -1,0 +1,2 @@
+class ApiLearningUnitsController < ApiApplicationController
+end
