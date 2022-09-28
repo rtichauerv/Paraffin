@@ -17,7 +17,7 @@ describe ApiResourceEvaluationsController do
       parameter name: :evaluation, in: :body, schema: {
         type: :object,
         properties: {
-          evaluation: { type: :integer }
+          evaluation: { type: :integer, minimum: 1, maximum: 5 }
         },
         required: ['evaluation']
       }

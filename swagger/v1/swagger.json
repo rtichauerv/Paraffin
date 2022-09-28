@@ -394,7 +394,7 @@
       "put": {
         "summary": "Creates or modifies the evaluation of a resource",
         "tags": [
-          "ResourceEvaluations"
+          "Resource Evaluations"
         ],
         "operationId": "setResourceEvaluation",
         "parameters": [
@@ -461,7 +461,9 @@
                 "type": "object",
                 "properties": {
                   "evaluation": {
-                    "type": "integer"
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 5
                   }
                 },
                 "required": [
