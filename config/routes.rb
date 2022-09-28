@@ -5,7 +5,10 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users
 
+<<<<<<< HEAD
   
+=======
+>>>>>>> 548a01f (feat: Learning Units index aPI)
   #For API routes use get/to to redirect to the API controller
   scope '/api' do
     defaults format: :json do
