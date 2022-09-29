@@ -3,6 +3,8 @@ class ApiApplicationController < ActionController::API
 
   rescue_from ActiveRecord::RecordNotFound, with: :handle_record_not_found_error
   rescue_from ActiveRecord::RecordInvalid, with: :handle_record_invalid_error
+  rescue_from ActionController::ParameterMissing,
+              with: :handle_record_invalid_error
 
   private
 
