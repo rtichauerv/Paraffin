@@ -107,7 +107,6 @@ describe ApiCompletedLearningUnitsController do
         }
 
         context 'when completition register does not exist' do
-          CompletedLearningUnit.destroy_all
           run_test! do |response|
             data = JSON.parse(response.body)
             expect(data['id']).to eq(CompletedLearningUnit.last.id)
@@ -127,7 +126,7 @@ describe ApiCompletedLearningUnitsController do
             create(
               :completed_learning_unit,
               user:,
-              learning_unit:
+              learning_unit_id:
             )
             submit_request(example.metadata)
           end
