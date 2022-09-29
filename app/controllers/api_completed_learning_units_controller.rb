@@ -1,5 +1,5 @@
 class ApiCompletedLearningUnitsController < ApiApplicationController
-  before_action :set_learning_unit, only: [:update]
+  before_action :set_learning_unit, only: %i[update uncomplete_learning_unit]
 
   def curriculums_learning_units_completed_by_user
     learning_units = Curriculum.find(params[:curriculum_id])&.learning_units
@@ -8,6 +8,17 @@ class ApiCompletedLearningUnitsController < ApiApplicationController
       learning_units:
     )
     render json: completed_learning_units, only: %i[id learning_unit_id]
+  end
+
+  def uncomplete_learning_unit
+    if CompletedLearningUnit.delete_by(
+      user: current_user,
+      learning_unit: @learning_unit
+    ).positive?
+      render json: {}, status: :no_content
+    else
+      handle_record_not_found_error
+    end
   end
 
   def update
