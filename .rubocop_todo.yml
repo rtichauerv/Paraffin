@@ -10,5 +10,3 @@
 # This cop supports safe autocorrection (--autocorrect).
 # Configuration parameters: AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, AllowedPatterns, IgnoredPatterns.
 # URISchemes: http, https
-Layout/LineLength:
-  Max: 106
