@@ -30,4 +30,27 @@ class ApiResourcesController < ApplicationController
     )
     render json: resource, only: %i[id name url description], status: :created
   end
+
+
+  def index_comments
+    comments = Curriculum
+               .find(params[:curriculum_id])
+               .learning_units
+               .find(params[:learning_unit_id])
+               .resources
+               .find(params[:resource_id])
+               .resource_comments
+
+    resource_comments = []
+    comments.each do |comment| 
+      json_hash = {
+        id: comment.id, 
+        content: comment.content,
+        user_name: User.find(comment.user_id).name,
+        created_at: comment.created_at
+      }
+      resource_comments << json_hash  
+    end 
+    render json: resource_comments
+  end
 end
