@@ -5,8 +5,7 @@
 
 ## The Team
 
-Created by the Iron Team (Ronny, Ale, Cris & Cecy) at the FIN bootcamp by Fintual.
-All (most) of this code was writen in Puerto Natales, under the benevolent protection of [Donmilo](http://donmilo.cl/).
+Created by the Queens Team 👑 at the FIN bootcamp by Fintual.
 
 
 ## The Stack
@@ -35,3 +34,14 @@ All (most) of this code was writen in Puerto Natales, under the benevolent prote
     `$ docker compose run web rake db:create db:migrate db:seed`
 
 4. Finally, enter http://localhost:3000/ in a browser to see the application running.
+
+
+## Deploy 🚀
+
+https://back-queens.herokuapp.com/
+
+## Autores ✒️
+
+-   **Vanessa Pulgar** - _Developer_ - [vpulgar](https://github.com/vpulgar)
+-   **Cecilia Ramallo** - _Developer_ - [cecyramallo](https://github.com/cecyramallo)
+-   **Isabel Vega** - _Developer_ - [isavega](https://github.com/isavega)
