@@ -17,7 +17,7 @@ class ApiCompletedLearningUnitsController < ApiApplicationController
     ).positive?
       render json: {}, status: :no_content
     else
-      handle_record_invalid_error
+      handle_record_not_found_error
     end
   end
 

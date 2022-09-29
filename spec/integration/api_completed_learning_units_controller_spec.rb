@@ -156,12 +156,6 @@ describe ApiCompletedLearningUnitsController do
       parameter name: :learning_unit_id, in: :path, type: :string
 
       response 204, 'Learning Unit Uncompleted' do
-        schema type: :object, properties: {
-          'code': { type: :integer },
-          'message': { type: :string },
-          'status': { type: :string }
-        }
-
         let(:learning_unit_id) { curriculum.learning_units.first.id }
 
         context 'when the learning unit is completed' do
@@ -180,26 +174,6 @@ describe ApiCompletedLearningUnitsController do
         end
       end
 
-      response 400, 'Invalid record' do
-        schema type: :object, properties: {
-          'code': { type: :integer },
-          'message': { type: :string },
-          'status': { type: :string }
-        }
-
-        let(:learning_unit_id) { curriculum.learning_units.first.id }
-
-        context 'when the learning unit is not completed' do
-          before do |example|
-            submit_request(example.metadata)
-          end
-
-          it 'returns an invalid record error' do
-            expect(response.status).to eq(400)
-          end
-        end
-      end
-
       response 404, 'Learning Unit Not Found' do
         schema type: :object, properties: {
           'code': { type: :integer },
@@ -214,6 +188,18 @@ describe ApiCompletedLearningUnitsController do
           end
 
           it 'returns a record not found error' do
+            expect(response.status).to eq(404)
+          end
+        end
+
+        let(:learning_unit_id) { curriculum.learning_units.first.id }
+
+        context 'when the learning unit is not completed' do
+          before do |example|
+            submit_request(example.metadata)
+          end
+
+          it 'returns an invalid record error' do
             expect(response.status).to eq(404)
           end
         end
