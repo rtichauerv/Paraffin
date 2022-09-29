@@ -90,7 +90,7 @@ describe ApiCompletedLearningUnitsController do
     end
   end
 
-  path '/api/learning_units/{learning_unit_id}/completed' do
+  path '/api/learning_units/{learning_unit_id}/completed_learning_unit' do
     put 'Records a learning unit completition by an user' do
       tags 'Learning Units'
       consumes 'application/json'

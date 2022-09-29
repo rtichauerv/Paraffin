@@ -67,7 +67,7 @@
         }
       }
     },
-    "/api/learning_units/{learning_unit_id}/completed": {
+    "/api/learning_units/{learning_unit_id}/completed_learning_unit": {
       "put": {
         "summary": "Records a learning unit completition by an user",
         "tags": [
