@@ -5,6 +5,11 @@ describe 'Curriculums API' do
     get 'All curriculums' do
       tags 'Curriculums'
       produces 'application/json'
+      let(:user) { create(:user) }
+
+      before do
+        sign_in user
+      end
 
       response '200', 'Success' do
         schema type: :array,
