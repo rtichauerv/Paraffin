@@ -28,7 +28,7 @@ Rails.application.routes.draw do
       get '/learning_units/:learning_unit_id/resources',
         to: 'api_resources#resources_of_learning_unit'
 
-      put 'learning_units/:learning_unit_id/completed',
+      put 'learning_units/:learning_unit_id/completed_learning_unit',
         to: 'api_completed_learning_units#update'
     end
   end
