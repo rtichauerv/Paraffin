@@ -95,5 +95,57 @@ describe ApiResourcesController do
         run_test!
       end
     end
+
+    post 'Creates a new resource for the given learning unit' do
+      tags 'Resources'
+      consumes 'application/json'
+      operationId 'createResource'
+      produces 'application/json'
+      parameter name: :learning_unit_id, in: :path, type: :string
+      parameter name: :resource, in: :body, schema: {
+        type: :object,
+        properties: {
+          name: { type: :string },
+          url: { type: :string, default: 'http://example.com' }
+        }
+      }
+
+      response '201', 'Created' do
+        schema type: :object, properties: {
+          id: { type: :integer },
+          name: { type: :string },
+          url: { type: :string, default: 'http://example.com' }
+        }
+        let(:learning_unit_id) { create(:learning_unit).id }
+        let(:resource) { { name: 'test_resource', url: 'http://test.io' } }
+        run_test!
+      end
+
+      response '400', 'Invalid parameters' do
+        schema type: :object, properties: {
+          'code': { type: :integer },
+          'message': { type: :string },
+          'status': { type: :string }
+        }
+        let(:learning_unit_id) { create(:learning_unit).id }
+
+        context 'when url is not valid' do
+          let(:resource) { { name: 'test_resource', url: 'badurl.io' } }
+
+          run_test!
+        end
+      end
+
+      response '404', 'Learning Unit does not exist' do
+        schema type: :object, properties: {
+          'code': { type: :integer },
+          'message': { type: :string },
+          'status': { type: :string }
+        }
+        let(:learning_unit_id) { 'invalid' }
+        let(:resource) { { name: 'test_resource', url: 'http://test.io' } }
+        run_test!
+      end
+    end
   end
 end

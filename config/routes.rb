@@ -24,12 +24,15 @@ Rails.application.routes.draw do
             'curriculums_learning_units_completed_by_user'
 
       get '/current_session', to: 'api_session#index'
-      
+
       get '/learning_units/:learning_unit_id/resources',
         to: 'api_resources#resources_of_learning_unit'
 
       put 'learning_units/:learning_unit_id/completed_learning_unit',
         to: 'api_completed_learning_units#update'
+
+      post '/learning_units/:learning_unit_id/resources',
+        to: 'api_resources#create'
     end
   end
 
