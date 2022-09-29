@@ -24,13 +24,15 @@ class ApiResourcesController < ApplicationController
     )
     render json: resource, only: %i[id name url description], status: :created
   end
+
   def create_comments
     comment = ResourceComment.create!(
       content: params[:content],
       user_id: current_user,
       resource_id: params[resource_id]
     )
-    
-    render json: comment, only: %i[content user_id resource_id], status: :created
+
+    render json: comment, only: %i[content user_id resource_id],
+           status: :created
   end
 end
