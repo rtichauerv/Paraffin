@@ -18,4 +18,16 @@ class ApiResourcesController < ApplicationController
 
     render json: resource, only: %i[id name description]
   end
+
+  def create
+    learning_unit = LearningUnit.find(params[:learning_unit_id])
+    resource = Resource.create!(
+      name: params[:name],
+      url: params[:url],
+      description: params[:description],
+      learning_unit:,
+      user: current_user
+    )
+    render json: resource, only: %i[id name url description], status: :created
+  end
 end

@@ -14,6 +14,9 @@ Rails.application.routes.draw do
       get '/curriculums/:curriculum_id/learning_units/:learning_unit_id', to: 'api_learning_units#show'
       get '/curriculums/:curriculum_id/learning_units/:learning_unit_id/resources', to: 'api_resources#index'
       get '/curriculums/:curriculum_id/learning_units/:learning_unit_id/resources/:resource_id', to: 'api_resources#show'
+      get '/curriculums/:curriculum_id/learning_units/:learning_unit_id/resources/:resource_id/comments', to: 'api_resources#index_comments'
+      post '/curriculums/:curriculum_id/learning_units/:learning_unit_id/resources/create', 
+        to: 'api_resources#create'
     end
   end
 
