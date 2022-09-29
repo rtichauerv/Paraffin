@@ -5,6 +5,8 @@ describe ApiCompletedLearningUnitsController do
   let(:user) { create(:user) }
   let(:curriculum) { curriculum_with_learning_units(learning_units_count: 4) }
   let(:curriculum_id) { curriculum.id }
+  let(:learning_unit) { create(:learning_unit) }
+  let(:learning_unit_id) { create(:learning_unit).id }
 
   before do
     sign_in user
@@ -84,6 +86,66 @@ describe ApiCompletedLearningUnitsController do
         }
         let(:curriculum_id) { 'invalid' }
         run_test!
+      end
+    end
+  end
+
+  path '/api/learning_units/{learning_unit_id}/completed_learning_unit' do
+    put 'Records a learning unit completition by an user' do
+      tags 'Learning Units'
+      consumes 'application/json'
+      parameter name: :learning_unit_id, in: :path, type: :string
+
+      produces 'application/json'
+      operationId 'completeLearningUnit'
+
+      response '201', 'Created' do
+        schema type: :object, properties: {
+          'id': { type: :integer },
+          'learning_unit_id': { type: :integer },
+          'user_id': { type: :integer }
+        }
+
+        context 'when completition register does not exist' do
+          run_test! do |response|
+            data = JSON.parse(response.body)
+            expect(data['id']).to eq(CompletedLearningUnit.last.id)
+          end
+        end
+      end
+
+      response 200, 'Success' do
+        schema type: :object, properties: {
+          'id': { type: :integer },
+          'learning_unit_id': { type: :integer },
+          'user_id': { type: :integer }
+        }
+
+        context 'when completition register already exist' do
+          before do |example|
+            create(
+              :completed_learning_unit,
+              user:,
+              learning_unit_id:
+            )
+            submit_request(example.metadata)
+          end
+
+          run_test!
+        end
+      end
+
+      response 404, 'Learning unit does not exist' do
+        schema type: :object, properties: {
+          'code': { type: :integer },
+          'message': { type: :string },
+          'status': { type: :string }
+        }
+        context 'when learning unit does not exist' do
+          let(:learning_unit_id) { 'invalid' }
+
+          run_test!
+        end
       end
     end
   end
