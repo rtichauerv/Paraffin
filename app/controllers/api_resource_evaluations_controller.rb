@@ -1,4 +1,14 @@
 class ApiResourceEvaluationsController < ApiApplicationController
+  def show
+    resource = Resource.find(params[:resource_id])
+    evaluation = resource.resource_evaluations.find_by(user: current_user)
+    if evaluation.nil?
+      handle_record_not_found_error
+    else
+      render json: evaluation, except: %i[created_at updated_at]
+    end
+  end
+
   def update
     evaluation = params.require(:evaluation)
     resource_id = params['resource_id']

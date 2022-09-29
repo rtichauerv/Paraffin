@@ -518,6 +518,70 @@
       }
     },
     "/api/resources/{resource_id}/resource_evaluation": {
+      "get": {
+        "summary": "Retrieves a resource",
+        "tags": [
+          "Resource Evaluations"
+        ],
+        "operationId": "getResourceEvaluation",
+        "parameters": [
+          {
+            "name": "resource_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "evaluation": {
+                      "type": "integer"
+                    },
+                    "resource_id": {
+                      "type": "integer"
+                    },
+                    "user_id": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource does not exist",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
       "put": {
         "summary": "Creates or modifies the evaluation of a resource",
         "tags": [
