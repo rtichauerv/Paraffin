@@ -130,9 +130,9 @@ describe ApiCompletedLearningUnitsController do
             )
             submit_request(example.metadata)
           end
+
           run_test!
         end
-
       end
 
       response 404, 'Learning unit does not exist' do
