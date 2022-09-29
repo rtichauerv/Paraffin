@@ -27,11 +27,4 @@ class ApiApplicationController < ActionController::API
   def render_error(code, message, status)
     render json: { code:, message:, status: }, status:
   end
-
-  def render_deletion_message
-    code = 204
-    status = :no_content
-    message = 'record_deleted'
-    render json: { code:, message:, status: }, status:
-  end
 end

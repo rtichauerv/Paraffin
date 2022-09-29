@@ -15,7 +15,7 @@ class ApiCompletedLearningUnitsController < ApiApplicationController
       user: current_user,
       learning_unit: @learning_unit
     ).positive?
-      render_deletion_message
+      render json: {}, status: :no_content
     else
       handle_record_invalid_error
     end
