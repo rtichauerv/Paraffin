@@ -11,9 +11,6 @@ class ApiLearningUnitsController < ApiApplicationController
                     .find(params[:curriculum_id])
                     .learning_units
                     .find(params[:learning_unit_id])
-    # Para tener un path mas lindo
-    # learning_unit = Curriculum.find(params[:curriculum_id]).
-    # learning_units[(params[:learning_unit_id]).to_i]
     render json: learning_unit, only: %i[id name description]
   end
 end
