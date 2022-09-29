@@ -106,7 +106,7 @@ describe ApiResourcesController do
         type: :object,
         properties: {
           name: { type: :string },
-          url: { type: :string }
+          url: { type: :string, default: 'http://example.com' }
         }
       }
 
@@ -114,7 +114,7 @@ describe ApiResourcesController do
         schema type: :object, properties: {
           id: { type: :integer },
           name: { type: :string },
-          url: { type: :string }
+          url: { type: :string, default: 'http://example.com' }
         }
         let(:learning_unit_id) { create(:learning_unit).id }
         let(:resource) { { name: 'test_resource', url: 'http://test.io' } }

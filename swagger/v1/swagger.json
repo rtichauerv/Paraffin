@@ -680,7 +680,8 @@
                       "type": "string"
                     },
                     "url": {
-                      "type": "string"
+                      "type": "string",
+                      "default": "http://example.com"
                     }
                   }
                 }
@@ -740,7 +741,8 @@
                     "type": "string"
                   },
                   "url": {
-                    "type": "string"
+                    "type": "string",
+                    "default": "http://example.com"
                   }
                 }
               }
