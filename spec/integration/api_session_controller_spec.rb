@@ -32,4 +32,16 @@ describe ApiSessionController do
       end
     end
   end
+
+  path '/users/sign_out' do
+    delete 'closes users session' do
+      tags 'Session'
+      operationId 'endSession'
+      produces 'application/json'
+
+      response '204', 'No Content' do
+        run_test!
+      end
+    end
+  end
 end
