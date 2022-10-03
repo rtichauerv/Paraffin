@@ -7,8 +7,7 @@ RSpec.describe 'API Resources', type: :request do
     sign_in user
   end
 
-  path '/api/curriculums/{curriculum_id}/learning_units/
-  {learning_unit_id}/resources/create' do
+  path '/api/curriculums/{curriculum_id}/learning_units/{learning_unit_id}/resources/create' do
     post 'Create a new resource' do
       tags 'Resources'
       consumes 'application/json'
