@@ -3,14 +3,12 @@ require 'rails_helper'
 RSpec.describe 'API Resources', type: :request do
   let(:user) { create(:user) }
 
-  
-
   before do |_response|
     sign_in user
   end
 
-  
-  path '/api/curriculums/{curriculum_id}/learning_units/{learning_unit_id}/resources/create' do
+  path '/api/curriculums/{curriculum_id}/learning_units/
+  {learning_unit_id}/resources/create' do
     post 'Create a new resource' do
       tags 'Resources'
       consumes 'application/json'
