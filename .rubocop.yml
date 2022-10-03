@@ -1027,7 +1027,7 @@ Layout/LineLength:
   Enabled: true
   VersionAdded: "0.25"
   VersionChanged: "1.4"
-  Max: 80
+  Max: 100
   # To make it possible to copy or click on URIs in the code, we allow lines
   # containing a URI to be longer than Max.
   AllowHeredoc: true
