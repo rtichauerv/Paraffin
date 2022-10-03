@@ -9,6 +9,46 @@ describe ApiResourceEvaluationsController do
   end
 
   path '/api/resources/{resource_id}/resource_evaluation' do
+    get 'Retrieves a resource' do
+      tags 'Resource Evaluations'
+      operationId 'getResourceEvaluation'
+      produces 'application/json'
+      parameter name: :resource_id, in: :path, type: :string
+
+      response '200', 'Success' do
+        schema type: :object,
+               properties: {
+                 id: { type: :integer },
+                 evaluation: { type: :integer },
+                 resource_id: { type: :integer },
+                 user_id: { type: :integer }
+               }
+        let(:resource_id) { create(:resource_evaluation, user:).resource_id }
+        run_test!
+      end
+
+      response '404', 'Resource does not exist' do
+        schema type: :object, properties: {
+          'code': { type: :integer },
+          'message': { type: :string },
+          'status': { type: :string }
+        }
+        context 'when resource does not exist' do
+          let(:resource_id) { 'invalid' }
+
+          run_test!
+        end
+
+        context 'when resource exist, but evaluation not exist' do
+          let(:resource_id) { create(:resource).id }
+
+          run_test!
+        end
+      end
+    end
+  end
+
+  path '/api/resources/{resource_id}/resource_evaluation' do
     put 'Creates or modifies the evaluation of a resource' do
       tags 'Resource Evaluations'
       operationId 'setResourceEvaluation'
