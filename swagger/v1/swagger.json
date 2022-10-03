@@ -970,6 +970,20 @@
           }
         }
       }
+    },
+    "/users/sign_out": {
+      "delete": {
+        "summary": "closes users session",
+        "tags": [
+          "Session"
+        ],
+        "operationId": "endSession",
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
     }
   },
   "servers": [
