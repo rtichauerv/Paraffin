@@ -1,19 +1,13 @@
 class ApiResourcesController < ApplicationController
   def index
-    resources = Curriculum
-                .find(params[:curriculum_id])
-                .learning_units
+    resources = LearningUnit
                 .find(params[:learning_unit_id])
                 .resources
     render json: resources, only: %i[id name description]
   end
 
   def show
-    resource = Curriculum
-               .find(params[:curriculum_id])
-               .learning_units
-               .find(params[:learning_unit_id])
-               .resources
+    resource = Resource
                .find(params[:resource_id])
 
     render json: resource, only: %i[id name description]
@@ -29,5 +23,16 @@ class ApiResourcesController < ApplicationController
       user: current_user
     )
     render json: resource, only: %i[id name url description], status: :created
+  end
+
+  def create_comments
+    comment = ResourceComment.create!(
+      content: params[:content],
+      user_id: current_user,
+      resource_id: params[resource_id]
+    )
+
+    render json: comment, only: %i[content user_id resource_id],
+           status: :created
   end
 end
