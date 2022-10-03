@@ -3,7 +3,6 @@ class ApiResourceEvaluationsController < ApiApplicationController
     resource = Resource.find(params[:resource_id])
     evaluation = resource.resource_evaluations.find_by!(user: current_user)
     render json: evaluation, except: %i[created_at updated_at]
-    end
   end
 
   def update
