@@ -33,7 +33,7 @@ RSpec.describe 'API Resources', type: :request do
           url: { type: :string },
           description: { type: :string }
         }
-        let(:curriculum) { create(:curriculum) }
+        let(:curriculum_id) { create(:curriculum).id }
         let(:learning_unit_id) { create(:learning_unit).id }
         let(:resource) { { name: 'test_resource', url: 'https://css-tricks.com/', description: 'Curso muy completo' } }
         run_test!
