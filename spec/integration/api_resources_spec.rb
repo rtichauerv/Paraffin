@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'swagger_helper'
 
 RSpec.describe 'API Resources', type: :request do
   let(:user) { create(:user) }
