@@ -13,6 +13,8 @@ RSpec.describe 'API Resources', type: :request do
     sign_in user unless response.metadata[:skip_before]
   end
 
+  # GET
+
   # All Resources
 
   path '/api/curriculums/{curriculum_id}/learning_units/{learning_unit_id}/resources' do
@@ -88,6 +90,9 @@ RSpec.describe 'API Resources', type: :request do
     end
   end
 
+  # POST
+
+  # Create resorce
   path '/api/curriculums/{curriculum_id}/learning_units/{learning_unit_id}/resources/create' do
     post 'Create a new resource' do
       tags 'Resources'
@@ -114,6 +119,40 @@ RSpec.describe 'API Resources', type: :request do
         let(:curriculum_id) { create(:curriculum).id }
         let(:learning_unit_id) { create(:learning_unit).id }
         let(:resource) { { name: 'test_resource', url: 'https://css-tricks.com/', description: 'Curso muy completo' } }
+        run_test!
+      end
+    end
+  end
+
+  # Create comment
+
+  path '/api/curriculums/{curriculum_id}/learning_units/{learning_unit_id}/resources/{resource_id}/comments' do
+    post 'Create a new comment' do
+      tags 'Resources'
+      consumes 'application/json'
+      produces 'application/json'
+      parameter name: :curriculum_id, in: :path, type: :string
+      parameter name: :learning_unit_id, in: :path, type: :string
+      parameter name: :resource_id, in: :path, type: :string
+      parameter name: :resource_comment, in: :body, schema: {
+        type: :object,
+        properties: {
+          content: { type: :string },
+          user_id: { type: :integer },
+          resource_id: { type: :integer }
+        }
+      }
+
+      response '201', 'Created' do
+        schema type: :object, properties: {
+          content: { type: :string },
+          user_id: { type: :integer },
+          resource_id: { type: :integer }
+        }
+        let(:curriculum_id) { create(:curriculum).id }
+        let(:learning_unit_id) { create(:learning_unit).id }
+        let(:resource_id) { create(:resource).id }
+        let(:resource_comment) { create(:resource_comment, resource:, user:) }
         run_test!
       end
     end
