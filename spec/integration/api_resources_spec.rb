@@ -13,6 +13,45 @@ RSpec.describe 'API Resources', type: :request do
     sign_in user unless response.metadata[:skip_before]
   end
 
+  # All Resources
+
+  path '/api/curriculums/{curriculum_id}/learning_units/{learning_unit_id}/resources' do
+    get 'Returns a list of all comments' do
+      tags 'Comments'
+      produces 'application/json'
+      parameter name: :curriculum_id, in: :path, type: :string
+      parameter name: :learning_unit_id, in: :path, type: :string
+
+      response '200', 'Success' do
+        schema type: :array, items: {
+          properties: {
+            id: { type: :integer },
+            name: { type: :string },
+            url: { type: :string },
+            description: { type: :string }
+          }
+        }
+
+        run_test!
+      end
+
+      response '401', 'Unauthorized', skip_before: true do
+        run_test!
+      end
+
+      # context 'when there are no resources created' do
+      #   before do |example|
+      #     submit_request(example.metadata)
+      #   end
+
+      #   it 'returns an empty array' do
+      #     data = JSON.parse(response.body)
+      #     expect(data.length).to eq(0)
+      #   end
+      # end
+    end
+  end
+
   # All Comments
   path '/api/curriculums/{curriculum_id}/learning_units/{learning_unit_id}/resources/{resource_id}/comments' do
     get 'Returns a list of all comments' do

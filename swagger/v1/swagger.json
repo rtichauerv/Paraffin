@@ -82,6 +82,63 @@
         }
       }
     },
+    "/api/curriculums/{curriculum_id}/learning_units/{learning_unit_id}/resources": {
+      "get": {
+        "summary": "Returns a list of all comments",
+        "tags": [
+          "Comments"
+        ],
+        "parameters": [
+          {
+            "name": "curriculum_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "learning_unit_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "id": {
+                        "type": "integer"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "url": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
     "/api/curriculums/{curriculum_id}/learning_units/{learning_unit_id}/resources/{resource_id}/comments": {
       "get": {
         "summary": "Returns a list of all comments",
