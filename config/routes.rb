@@ -19,7 +19,7 @@ Rails.application.routes.draw do
       # post '/curriculums/:curriculum_id/learning_units/:learning_unit_id/completed_learning_unit', to: 'api_learning_units#'
       post '/curriculums/:curriculum_id/learning_units/:learning_unit_id/resources/create',
         to: 'api_resources#create'
-      # post '/curriculums/:curriculum_id/learning_units/:learning_unit_id/resources/:resource_id/comments', to: 'api_resources#create_comments'
+      post '/curriculums/:curriculum_id/learning_units/:learning_unit_id/resources/:resource_id/comments', to: 'api_resources#create_comments'
     end
   end
 

@@ -47,8 +47,8 @@ class ApiResourcesController < ApplicationController
   def create_comments
     comment = ResourceComment.create!(
       content: params[:content],
-      user_id: current_user,
-      resource_id: params[resource_id]
+      user_id: params[:user_id],
+      resource_id: params[:resource_id]
     )
 
     render json: comment, only: %i[content user_id resource_id],
