@@ -22,9 +22,15 @@ describe ApiResourceCommentsController do
                items: {
                  properties: {
                    id: { type: :integer },
-                   user_id: { type: :integer },
-                   resource_id: { type: :integer },
-                   content: { type: :string }
+                   content: { type: :string },
+                   created_at: { type: :string, format: :datetime },
+                   user: {
+                     type: :object,
+                     properties: {
+                       id: { type: :integer },
+                       name: { type: :string }
+                     }
+                   }
                  }
                }
         run_test!
