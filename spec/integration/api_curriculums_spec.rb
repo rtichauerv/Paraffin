@@ -19,7 +19,8 @@ RSpec.describe 'API Curriculums', type: :request do
         schema type: :array, items: {
           properties: {
             id: { type: :integer },
-            name: { type: :string }
+            name: { type: :string },
+            description: { type: :string }
           }
         }
         run_test!
@@ -52,7 +53,8 @@ RSpec.describe 'API Curriculums', type: :request do
       response '200', 'Success' do
         schema type: :object, properties: {
           'id': { type: :integer },
-          'name': { type: :string }
+          'name': { type: :string },
+          'description': { type: :string }
         }
 
         let(:curriculum_id) { create(:curriculum).id }
