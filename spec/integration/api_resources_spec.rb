@@ -3,12 +3,14 @@ require 'swagger_helper'
 
 RSpec.describe 'API Resources', type: :request do
   let(:user) { create(:user) }
+  let(:curriculum_id) { create(:curriculum).id }
+  let(:learning_unit_id) { create(:learning_unit).id }
   let(:resource) { create(:resource, user:) }
-  let(:resource_id) { resource.id }
+  let(:resource_id) { create(:resource).id }
   let(:resource_comment) { create(:resource_comment, resource:, user:) }
 
-  before do |_response|
-    sign_in user
+  before do |response|
+    sign_in user unless response.metadata[:skip_before]
   end
 
   # All Comments
@@ -27,9 +29,6 @@ RSpec.describe 'API Resources', type: :request do
             content: { type: :string }
           }
         }
-        let(:curriculum_id) { create(:curriculum).id }
-        let(:learning_unit_id) { create(:learning_unit).id }
-        let(:resource_id) { create(:resource).id }
         run_test!
       end
 

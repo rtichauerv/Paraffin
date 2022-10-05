@@ -88,6 +88,32 @@
         "tags": [
           "Comments"
         ],
+        "parameters": [
+          {
+            "name": "curriculum_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "learning_unit_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "resource_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Success",
@@ -100,7 +126,7 @@
                       "id": {
                         "type": "integer"
                       },
-                      "name": {
+                      "content": {
                         "type": "string"
                       }
                     }
