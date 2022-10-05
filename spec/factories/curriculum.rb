@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :curriculum do
     name { 'Fin program' }
+    description { 'The best program' }
   end
 end
 

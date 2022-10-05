@@ -5307,3 +5307,10 @@ RSpec/DescribeClass:
 
 RSpec/EmptyExampleGroup:
   Enabled: false
+
+RSpec/MethodLength:
+  Enabled: false
+
+RSpec/LineLength:
+  Enabled: false
+

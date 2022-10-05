@@ -3,14 +3,33 @@ class ApiResourcesController < ApplicationController
     resources = LearningUnit
                 .find(params[:learning_unit_id])
                 .resources
-    render json: resources, only: %i[id name description]
+    render json: resources, only: %i[id name url description]
   end
 
   def show
     resource = Resource
                .find(params[:resource_id])
 
-    render json: resource, only: %i[id name description]
+    render json: resource, only: %i[id name url description]
+  end
+
+  def index_comments
+    comments = Resource
+               .find(params[:resource_id])
+               .resource_comments
+               .includes(:user)
+
+    resource_comments = []
+    comments.each do |comment|
+      json_hash = {
+        id: comment.id,
+        content: comment.content,
+        user_name: User.find(comment.user_id).name,
+        created_at: comment.created_at
+      }
+      resource_comments << json_hash
+    end
+    render json: resource_comments
   end
 
   def create
