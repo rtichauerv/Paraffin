@@ -92,7 +92,7 @@ RSpec.describe 'API Resources', type: :request do
 
   # POST
 
-   # Create resorce
+  # Create resorce
   path '/api/curriculums/{curriculum_id}/learning_units/{learning_unit_id}/resources/create' do
     post 'Create a new resource' do
       tags 'Resources'
@@ -123,7 +123,7 @@ RSpec.describe 'API Resources', type: :request do
       end
     end
   end
-  
+
   # Create comment
 
   path '/api/curriculums/{curriculum_id}/learning_units/{learning_unit_id}/resources/{resource_id}/comments' do
@@ -139,17 +139,15 @@ RSpec.describe 'API Resources', type: :request do
         properties: {
           content: { type: :string },
           user_id: { type: :integer },
-          resource_id: { type: :integer },
+          resource_id: { type: :integer }
         }
       }
-
-
 
       response '201', 'Created' do
         schema type: :object, properties: {
           content: { type: :string },
           user_id: { type: :integer },
-          resource_id: { type: :integer },
+          resource_id: { type: :integer }
         }
         let(:curriculum_id) { create(:curriculum).id }
         let(:learning_unit_id) { create(:learning_unit).id }
