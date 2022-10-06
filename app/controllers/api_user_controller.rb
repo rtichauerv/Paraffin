@@ -1,5 +1,5 @@
 class ApiUserController < ApiApplicationController
-  def get_user
+  def user_info
     user = current_user
     render json: user
   end
