@@ -8,6 +8,35 @@ describe ApiLearningUnitsController do
     sign_in user
   end
 
+  path '/api/learning_units/{learning_unit_id}' do
+    get 'Retrieves a Learning unit' do
+      tags 'Learning Units'
+      operationId 'getLearningUnit'
+      produces 'application/json'
+      parameter name: :learning_unit_id, in: :path, type: :string
+
+      response '200', 'Success' do
+        schema type: :object, properties: {
+          'id': { type: :integer },
+          'name': { type: :string }
+        }
+
+        let(:learning_unit_id) { create(:learning_unit).id }
+        run_test!
+      end
+
+      response '404', 'Learning Unit Not Found' do
+        schema type: :object, properties: {
+          'code': { type: :integer },
+          'message': { type: :string },
+          'status': { type: :string }
+        }
+        let(:learning_unit_id) { 'invalid' }
+        run_test!
+      end
+    end
+  end
+
   path '/api/curriculums/{curriculum_id}/learning_units' do
     get 'List of all learning units belonging to a curriculum' do
       tags 'Learning Units'

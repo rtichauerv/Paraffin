@@ -37,6 +37,8 @@ Rails.application.routes.draw do
 
       post '/learning_units/:learning_unit_id/resources',
         to: 'api_resources#create'
+
+        get '/learning_units/:learning_unit_id', to: 'api_learning_units#show'
     end
   end
 

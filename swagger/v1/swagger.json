@@ -285,6 +285,66 @@
         }
       }
     },
+    "/api/learning_units/{learning_unit_id}": {
+      "get": {
+        "summary": "Retrieves a Learning unit",
+        "tags": [
+          "Learning Units"
+        ],
+        "operationId": "getLearningUnit",
+        "parameters": [
+          {
+            "name": "learning_unit_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Learning Unit Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/curriculums/{curriculum_id}/learning_units": {
       "get": {
         "summary": "List of all learning units belonging to a curriculum",
