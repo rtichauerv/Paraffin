@@ -1,4 +1,4 @@
-class ApiResourcesController < ApplicationController
+class ApiResourcesController < ApiApplicationController
   def index
     resources = LearningUnit
                 .find(params[:learning_unit_id])
