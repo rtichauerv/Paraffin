@@ -4,10 +4,6 @@ require 'rails_helper'
 describe ApiCurriculumsController do
   let(:user) { create(:user) }
 
-  before do
-    sign_in user
-  end
-
   path '/api/curriculums' do
     get 'List of all curriculums' do
       tags 'Curriculums'
@@ -60,6 +56,10 @@ describe ApiCurriculumsController do
         end
       end
     end
+  end
+
+  before do
+    sign_in user
   end
 
   path '/api/curriculums/{curriculum_id}' do
