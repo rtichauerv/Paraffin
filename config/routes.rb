@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   #For API routes use get/to to redirect to the API controller
   scope '/api' do
     defaults format: :json do
+      get '/user', to 'api_users#get_user'
       get '/curriculums', to: 'api_curriculums#index'
       get '/curriculums/:curriculum_id', to: 'api_curriculums#show'
       get '/curriculums/:curriculum_id/learning_units', to: 'api_learning_units#index'
