@@ -9,6 +9,7 @@
 #  updated_at       :datetime         not null
 #  user_id          :bigint
 #  learning_unit_id :bigint
+#  description      :string
 #
 require 'rails_helper'
 
