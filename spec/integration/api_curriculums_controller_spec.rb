@@ -14,7 +14,8 @@ describe ApiCurriculumsController do
         schema type: :array, items: {
           properties: {
             id: { type: :integer },
-            name: { type: :string }
+            name: { type: :string },
+            description: { type: :string, nullable: true }
           }
         }
         run_test!
@@ -72,7 +73,8 @@ describe ApiCurriculumsController do
       response '200', 'Success' do
         schema type: :object, properties: {
           'id': { type: :integer },
-          'name': { type: :string }
+          'name': { type: :string },
+          'description': { type: :string, nullable: true }
         }
 
         let(:curriculum_id) { create(:curriculum).id }
