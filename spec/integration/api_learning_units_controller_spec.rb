@@ -18,7 +18,8 @@ describe ApiLearningUnitsController do
       response '200', 'Success' do
         schema type: :object, properties: {
           'id': { type: :integer },
-          'name': { type: :string }
+          'name': { type: :string },
+          'description': { type: :string, nullable: true }
         }
 
         let(:learning_unit_id) { create(:learning_unit).id }
@@ -48,7 +49,8 @@ describe ApiLearningUnitsController do
         schema type: :array, items: {
           properties: {
             id: { type: :integer },
-            name: { type: :string }
+            name: { type: :string },
+            description: { type: :string, nullable: true }
           }
         }
         let(:curriculum) { create(:curriculum) }
