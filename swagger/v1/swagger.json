@@ -215,6 +215,10 @@
                       },
                       "name": {
                         "type": "string"
+                      },
+                      "description": {
+                        "type": "string",
+                        "nullable": true
                       }
                     }
                   }
@@ -255,6 +259,10 @@
                     },
                     "name": {
                       "type": "string"
+                    },
+                    "description": {
+                      "type": "string",
+                      "nullable": true
                     }
                   }
                 }
@@ -315,6 +323,10 @@
                     },
                     "name": {
                       "type": "string"
+                    },
+                    "description": {
+                      "type": "string",
+                      "nullable": true
                     }
                   }
                 }
@@ -376,6 +388,10 @@
                       },
                       "name": {
                         "type": "string"
+                      },
+                      "description": {
+                        "type": "string",
+                        "nullable": true
                       }
                     }
                   }
@@ -791,6 +807,10 @@
                       "type": "string",
                       "nullable": true
                     },
+                    "description": {
+                      "type": "string",
+                      "nullable": true
+                    },
                     "average_evaluation": {
                       "type": "string",
                       "nullable": true
@@ -859,6 +879,10 @@
                       "url": {
                         "type": "string"
                       },
+                      "description": {
+                        "type": "string",
+                        "nullable": true
+                      },
                       "average_evaluation": {
                         "type": "string"
                       }
@@ -924,6 +948,10 @@
                     "url": {
                       "type": "string",
                       "default": "http://example.com"
+                    },
+                    "description": {
+                      "type": "string",
+                      "nullable": true
                     }
                   }
                 }
@@ -985,6 +1013,9 @@
                   "url": {
                     "type": "string",
                     "default": "http://example.com"
+                  },
+                  "description": {
+                    "type": "string"
                   }
                 }
               }
