@@ -54,6 +54,8 @@ gem 'bootsnap', require: false
 # Checks that a URL given as a string is valid
 gem 'validate_url'
 
+gem 'rswag'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 

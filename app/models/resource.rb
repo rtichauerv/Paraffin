@@ -9,6 +9,7 @@
 #  updated_at       :datetime         not null
 #  user_id          :bigint
 #  learning_unit_id :bigint
+#  description      :string
 #
 class Resource < ApplicationRecord
   belongs_to :user
@@ -17,4 +18,8 @@ class Resource < ApplicationRecord
   has_many :resource_evaluations
 
   validates :url, url: { allow_blank: true }
+
+  def average_evaluation
+    resource_evaluations.average(:evaluation)
+  end
 end
