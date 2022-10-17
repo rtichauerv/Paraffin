@@ -118,4 +118,46 @@ describe ApiLearningUnitsController do
       end
     end
   end
+
+  path '/api/learning_units/{learning_unit_id}/is_completed' do
+    get 'Completion status of a learning unit for a user' do
+      tags 'Learning Units'
+      get 'List of all learning units belonging to a curriculum' do
+        tags 'Learning Units'
+        operationId 'isLearningUnitCompleted'
+        produces 'application/json'
+        parameter name: :learning_unit_id, in: :path, type: :string
+
+        response '200', 'Success' do
+          schema type: :object, properties: {
+            'completed': { type: :boolean }
+          }
+          let(:learning_unit_id) { create(:learning_unit).id }
+
+          context 'when the learning unit is not completed' do
+            before do |example|
+              submit_request(example.metadata)
+            end
+
+            it 'returns true' do
+              data = JSON.parse(response.body)
+              expect(data['completed']).to be false
+            end
+          end
+
+          context 'when the learning unit is completed' do
+            before do |example|
+              create(:completed_learning_unit, learning_unit_id:, user:)
+              submit_request(example.metadata)
+            end
+
+            it 'returns true' do
+              data = JSON.parse(response.body)
+              expect(data['completed']).to be true
+            end
+          end
+        end
+      end
+    end
+  end
 end
