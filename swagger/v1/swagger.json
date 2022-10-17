@@ -423,6 +423,42 @@
         }
       }
     },
+    "/api/learning_units/{learning_unit_id}/is_completed": {
+      "get": {
+        "summary": "List of all learning units belonging to a curriculum",
+        "tags": [
+          "Learning Units"
+        ],
+        "operationId": "isLearningUnitCompleted",
+        "parameters": [
+          {
+            "name": "learning_unit_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "completed": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/resources/{resource_id}/resource_comments": {
       "get": {
         "summary": "Retrieves a list of resource comments",
